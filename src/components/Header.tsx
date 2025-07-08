@@ -9,7 +9,7 @@ const Header = () => {
     { name: "خانه", icon: Home, href: "#home" },
     { name: "خدمات", icon: CreditCard, href: "#services" },
     { name: "بازی‌ها", icon: Gamepad2, href: "#games" },
-    { name: "مدیریت", icon: Settings, href: "#admin" },
+    { name: "ورود ادمین", icon: Settings, href: "/admin", isAdmin: true },
   ];
 
   return (
@@ -34,7 +34,11 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="flex items-center gap-2 text-foreground hover:text-primary transition-colors duration-300"
+                  className={`flex items-center gap-2 transition-all duration-300 ${
+                    item.isAdmin 
+                      ? "text-accent hover:text-accent/80 font-medium" 
+                      : "text-foreground hover:text-primary"
+                  }`}
                 >
                   <Icon className="h-4 w-4" />
                   <span>{item.name}</span>
@@ -64,7 +68,11 @@ const Header = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors duration-300"
+                    className={`flex items-center gap-3 p-3 rounded-lg transition-colors duration-300 ${
+                      item.isAdmin 
+                        ? "bg-accent/20 text-accent hover:bg-accent/30 font-medium" 
+                        : "hover:bg-accent/50"
+                    }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Icon className="h-5 w-5" />
