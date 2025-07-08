@@ -20,3 +20,13 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,  // ✅ این خط پورت Replit رو ست می‌کنه
+    host: true   // ✅ این اجازه می‌ده Replit از بیرون دسترسی داشته باشه
+  }
+})
